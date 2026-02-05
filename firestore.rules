@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    match /oauth_tokens/{id} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /pages/{id} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /contacts/{id} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Webhook events - server only
+    match /webhook_events/{id} {
+      allow read, write: if false;
+    }
+
+    // Conversations - realtime read for all (simplified for MVP)
+    match /conversations/{convId} {
+      allow read: if true;
+      allow write: if false;
+      
+      match /messages/{msgId} {
+        allow read: if true;
+        allow write: if false;
+      }
+    }
+
+    match /auditLogs/{id} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+  }
+}

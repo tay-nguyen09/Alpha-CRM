@@ -1,0 +1,6 @@
+functions/lib/
+.next/
+node_modules/
+dist/
+build/
+.turbo/
