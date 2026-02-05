@@ -58,8 +58,8 @@ export const firebaseSlice = createAppSlice({
                 fulfilled: (state, action) => {
                     state.status = "success";
                     const all = action.payload as Array<TypeUser>;
-                    state.users = all.filter(u => !u.isDelete);
-                    state.deletedUsers = all.filter(u => !!u.isDelete);
+                    state.users = all.filter(u => !u.isDelete || u.isDeleted);
+                    state.deletedUsers = all.filter(u => !!u.isDelete || u.isDeleted);
                     state.isLoading = false;
                 },
                 rejected: (state) => {

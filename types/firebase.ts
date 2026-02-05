@@ -35,4 +35,5 @@ export type TypeUser = {
     uid: string
     dailyReports?: TypeDailyReport[]
     isDelete?: boolean
+    isDeleted?: boolean
 }

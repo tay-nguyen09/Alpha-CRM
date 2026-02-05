@@ -68,7 +68,7 @@ export default function UserInfoCard({ userDoc }: { userDoc: TypeUser }) {
                 </p>
                 <p className="text-sm font-medium text-gray-800 dark:text-white/90">
 
-                  {userDoc.isDelete ? "Nằm trong thùng rác" : userDoc.isFloating ? "Dữ Liệu Thả Nổi" : emptyData(lastAssign.employeeName)}
+                  {userDoc.isDelete || userDoc.isDeleted ? "Nằm trong thùng rác" : userDoc.isFloating ? "Dữ Liệu Thả Nổi" : emptyData(lastAssign.employeeName)}
                 </p>
               </div>
 

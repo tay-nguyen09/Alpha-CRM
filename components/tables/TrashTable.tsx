@@ -175,6 +175,13 @@ const TrashTable = () => {
                                         toast.success('Thành Công')
                                     } else if (confirmAction?.type === 'delete') {
                                         // deleteUserPermanently(confirmAction.docId)
+                                        updateUserByDocId({
+                                            docId: confirmAction.docId, data: { isDeleted: true },
+                                            action: {
+                                                note: 'Khôi phục liên hệ từ thùng rác',
+                                                action: "restore_contact"
+                                            }
+                                        })
                                         toast.success('Thành Công')
                                     }
                                 } catch {
